@@ -1,15 +1,17 @@
 <main class="flex-grow-1">
   <section class="d-flex flex-column align-items-center mt-5">
-    <h1 class="font-Regular">
-      <span class="g">S</span>
-      <span class="o1">l</span>
-      <span class="o2">a</span>
-      <span class="g">n</span>
-      <span class="l">g</span>
-      <span class="e">o</span>
-    </h1>
+    <a routerLink="#"
+      ><h1 class="font-Regular">
+        <span class="g">S</span>
+        <span class="o1">l</span>
+        <span class="o2">a</span>
+        <span class="g">n</span>
+        <span class="l">g</span>
+        <span class="e">o</span>
+      </h1></a
+    >
 
-    <div class="input-group unified-border mb-4" style="max-width: 584px">
+    <div class="input-group unified-border mb-4">
       <span class="input-group-text bg-white no-border rounded-start-pill ps-3">
         <i class="bi bi-search text-secondary"></i>
       </span>
@@ -37,7 +39,7 @@
     </div>
   </div>
 
-  <div *ngIf="searchStarted && results.length === 0 && term.trim() !== ''">
+  <div *ngIf="searchStarted && results.length === 0">
     <p>No results found.</p>
   </div>
 </div>

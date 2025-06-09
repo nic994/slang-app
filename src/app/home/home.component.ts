@@ -3,6 +3,7 @@ import { ApiService } from '../api.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SlangWordsEntry } from '../SlangWordsEntry.interface';
+import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -16,18 +17,28 @@ export class HomeComponent implements OnInit {
   results: SlangWordsEntry[] = [];
   searchStarted: boolean = false;
 
-  constructor(private apiService: ApiService, private cd: ChangeDetectorRef) {}
+  constructor(private apiService: ApiService) {}
   ngOnInit(): void {}
 
   search(): void {
-    // console.log('Searching for:', this.term);
     if (this.term.trim() !== '') {
-      this.apiService.search(this.term).subscribe((entries) => {
-        this.results = entries;
-        //console.log('Results:', entries);
-      });
+      this.apiService.search(this.term).subscribe(
+        (entries) => {
+          this.results = entries;
+          this.searchStarted = true;
+        },
+        (error) => {
+          if (error.status === 404) {
+            // Word not found
+            this.results = [];
+            this.searchStarted = true;
+          } else {
+          }
+        }
+      );
     } else {
       this.results = [];
+      this.searchStarted = false;
     }
   }
 }
