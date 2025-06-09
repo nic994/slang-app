@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "productSansRegular";
+  src: url("./asset/font/ProductSans-Regular.ttf");
+}
+@font-face {
+  font-family: "productSansBold";
+  src: url("./asset/font/ProductSans-Bold.ttf");
+}
+.font-Regular {
+  font-family: "productSansRegular";
+}
+.font-bold {
+  font-family: "productSansBold";
+}

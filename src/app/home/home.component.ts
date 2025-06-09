@@ -1,0 +1,33 @@
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { SlangWordsEntry } from '../SlangWordsEntry.interface';
+
+@Component({
+  selector: 'app-home',
+  standalone: true,
+  imports: [FormsModule, CommonModule],
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css',
+})
+export class HomeComponent implements OnInit {
+  term: string = '';
+  results: SlangWordsEntry[] = [];
+  searchStarted: boolean = false;
+
+  constructor(private apiService: ApiService, private cd: ChangeDetectorRef) {}
+  ngOnInit(): void {}
+
+  search(): void {
+    // console.log('Searching for:', this.term);
+    if (this.term.trim() !== '') {
+      this.apiService.search(this.term).subscribe((entries) => {
+        this.results = entries;
+        //console.log('Results:', entries);
+      });
+    } else {
+      this.results = [];
+    }
+  }
+}

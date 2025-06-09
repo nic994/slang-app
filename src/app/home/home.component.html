@@ -1,0 +1,51 @@
+<main class="flex-grow-1">
+  <section class="d-flex flex-column align-items-center mt-5">
+    <h1 class="font-Regular">
+      <span class="g">S</span>
+      <span class="o1">l</span>
+      <span class="o2">a</span>
+      <span class="g">n</span>
+      <span class="l">g</span>
+      <span class="e">o</span>
+    </h1>
+
+    <div class="input-group unified-border mb-4" style="max-width: 584px">
+      <span class="input-group-text bg-white no-border rounded-start-pill ps-3">
+        <i class="bi bi-search text-secondary"></i>
+      </span>
+      <input
+        type="search"
+        class="form-control no-border rounded-end-pill py-2 ps-2 pe-5"
+        placeholder=""
+        [(ngModel)]="term"
+        (keyup.enter)="search()"
+        autofocus
+      />
+    </div>
+  </section>
+</main>
+
+<div class="container output mb-5">
+  <div *ngFor="let entry of results; let i = index">
+    <span class="entry-number">{{ i + 1 }}</span
+    ><strong>{{ entry.word }}</strong>
+    <span class="definition"
+      ><p>{{ entry.meaning }}</p></span
+    >
+    <div class="example mbgo-2">
+      <em>{{ entry.example }}</em>
+    </div>
+  </div>
+
+  <div *ngIf="searchStarted && results.length === 0 && term.trim() !== ''">
+    <p>No results found.</p>
+  </div>
+</div>
+<!-- <div class="d-flex mt-3">
+      <button type="button" class="btn btn-light rounded-md me-2">
+        Find That Slang
+      </button>
+      <button type="button" class="btn btn-light rounded-md">
+        I'm Feeling Lucky
+      </button>
+    </div> -->
