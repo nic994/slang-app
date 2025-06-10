@@ -41,4 +41,6 @@ export class HomeComponent implements OnInit {
       this.searchStarted = false;
     }
   }
+
+  logo = '../../asset/image/logo2.png';
 }

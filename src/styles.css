@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
   font-family: "productSansRegular";
   src: url("./asset/font/ProductSans-Regular.ttf");
 }
@@ -11,4 +11,10 @@
 }
 .font-bold {
   font-family: "productSansBold";
+} */
+
+body {
+  background-color: #0a0a0a;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
 }
