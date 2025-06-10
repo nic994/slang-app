@@ -1,13 +1,76 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>SlangApp</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Slango</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="slango.ico" />
+  </head>
+  <body>
+    <app-root>
+      <style>
+        html,
+        body {
+          height: 100%;
+          margin: 0;
+        }
+
+        section {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          background-color: #000;
+        }
+
+        .loader {
+          display: flex;
+          align-items: center;
+        }
+
+        .bar {
+          display: inline-block;
+          width: 3px;
+          height: 20px;
+          background-color: rgba(255, 255, 255, 0.5);
+          border-radius: 10px;
+          animation: scale-up4 1s linear infinite;
+        }
+
+        .bar:nth-child(2) {
+          height: 35px;
+          margin: 0 5px;
+          animation-delay: 0.25s;
+        }
+
+        .bar:nth-child(3) {
+          animation-delay: 0.5s;
+        }
+
+        @keyframes scale-up4 {
+          20% {
+            background-color: #fff;
+            transform: scaleY(1.5);
+          }
+          40% {
+            transform: scaleY(1);
+          }
+        }
+
+        @media (max-width: 426px) {
+          section {
+            height: 94vh;
+          }
+        }
+      </style>
+      <section>
+        <div class="loader">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </section>
+    </app-root>
+  </body>
 </html>

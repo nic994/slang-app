@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SlangWordsEntry } from '../SlangWordsEntry.interface';
 import { catchError, of } from 'rxjs';
+import { RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
@@ -41,6 +42,9 @@ export class HomeComponent implements OnInit {
       this.searchStarted = false;
     }
   }
-
+  clearResults() {
+    this.results = [];
+    this.searchStarted = false;
+  }
   logo = '../../asset/image/logo2.png';
 }
