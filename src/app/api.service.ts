@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { SlangWordsEntry } from './SlangWordsEntry.interface';
+import {
+  SlangWordsEntry,
+  SlangWordsResponse,
+} from './SlangWordsEntry.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +15,7 @@ export class ApiService {
 
   search(term: string): Observable<SlangWordsEntry[]> {
     return this.http
-      .get<{ data: SlangWordsEntry[] }>(`${this.baseUrl}?term=${term}`)
-      .pipe(map((response: { data: any }) => response.data));
+      .get<SlangWordsResponse>(`${this.baseUrl}?term=${term}`)
+      .pipe(map((response) => response.data));
   }
 }

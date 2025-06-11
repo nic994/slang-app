@@ -3,8 +3,7 @@ import { ApiService } from '../api.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SlangWordsEntry } from '../SlangWordsEntry.interface';
-import { catchError, of } from 'rxjs';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -19,29 +18,30 @@ export class HomeComponent implements OnInit {
   searchStarted: boolean = false;
 
   constructor(private apiService: ApiService) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.search();
+  }
 
   search(): void {
     if (this.term.trim() !== '') {
-      this.apiService.search(this.term).subscribe(
-        (entries) => {
+      this.apiService.search(this.term).subscribe({
+        next: (entries) => {
           this.results = entries;
           this.searchStarted = true;
         },
-        (error) => {
+        error: (error) => {
           if (error.status === 404) {
-            // Word not found
             this.results = [];
             this.searchStarted = true;
-          } else {
           }
-        }
-      );
+        },
+      });
     } else {
       this.results = [];
       this.searchStarted = false;
     }
   }
+
   clearResults() {
     this.results = [];
     this.searchStarted = false;
