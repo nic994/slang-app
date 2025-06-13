@@ -94,6 +94,11 @@ h1 {
 }
 /* end output */
 
+input::placeholder {
+  color: #b3b3b3;
+  opacity: 5;
+}
+
 /* mobile responsive */
 @media (max-width: 768px) {
   .output {
